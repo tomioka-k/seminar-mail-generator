@@ -1,7 +1,8 @@
 export interface Seminar {
+  senderName: string;
+  senderAdress: string;
   name: string;
   description: string;
-  linkUrl: string;
   overview: string;
   overviewDescription: string;
   start: string;
@@ -11,4 +12,9 @@ export interface Seminar {
   deadline: string;
   flyerUrl: string;
   inquiry: string;
+  document: string;
+}
+
+export interface SeminarProps {
+  seminar: Seminar;
 }
