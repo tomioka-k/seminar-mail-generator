@@ -6,13 +6,11 @@ import CustomerAcquisition from "./components/templates/CustomerAcquisition";
 import { Seminar } from "./components/types";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
-import FormGroup from "@mui/material/FormGroup";
 import FormLabel from "@mui/material/FormLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
 import ApplicationReception from "./components/templates/ApplicationReception";
 import Guidunce from "./components/templates/Guidunce";
 import Thanks from "./components/templates/Thanks";
@@ -310,7 +308,7 @@ function App() {
                 onChange={handleInuptChange}
               />
             ) : null}
-            {value === 2  && seminar.method === "オンライン" ? (
+            {value === 2 && seminar.method === "オンライン" ? (
               <TextField
                 fullWidth
                 multiline
