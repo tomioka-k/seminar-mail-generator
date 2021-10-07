@@ -6,6 +6,13 @@ import CustomerAcquisition from "./components/templates/CustomerAcquisition";
 import { Seminar } from "./components/types";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
+import FormGroup from "@mui/material/FormGroup";
+import FormLabel from "@mui/material/FormLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
 import ApplicationReception from "./components/templates/ApplicationReception";
 import Guidunce from "./components/templates/Guidunce";
 import Thanks from "./components/templates/Thanks";
@@ -58,6 +65,12 @@ const initialstate: Seminar = {
   flyerUrl: "",
   inquiry: "",
   document: "",
+  urlForWatching: "",
+  anySentence: "",
+  enqueteUrl: "",
+  enqueteDeadline: "",
+  CPD: true,
+  method: "オンライン",
 };
 
 function App() {
@@ -108,6 +121,104 @@ function App() {
               value={seminar.name}
               onChange={handleInuptChange}
             />
+            <br />
+            {value !== 3 ? (
+              <>
+                <br />
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">CPD認定</FormLabel>
+                  <RadioGroup
+                    row
+                    aria-label="method"
+                    name="row-radio-buttons-group"
+                    value={seminar.CPD}
+                    onChange={(e) =>
+                      setSeminar({ ...seminar, CPD: !seminar.CPD })
+                    }
+                  >
+                    <FormControlLabel
+                      value={true}
+                      control={<Radio />}
+                      label="あり"
+                    />
+                    <FormControlLabel
+                      value={false}
+                      control={<Radio />}
+                      label="無し"
+                    />
+                  </RadioGroup>
+                </FormControl>
+                <br />
+                <br />
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">開催方法</FormLabel>
+                  <RadioGroup
+                    row
+                    aria-label="method"
+                    name="row-radio-buttons-group"
+                    value={seminar.method}
+                    onChange={(e) =>
+                      setSeminar({ ...seminar, method: e.target.value })
+                    }
+                  >
+                    <FormControlLabel
+                      value="オンライン"
+                      control={<Radio />}
+                      label="オンライン"
+                    />
+                    <FormControlLabel
+                      value="会場"
+                      control={<Radio />}
+                      label="会場"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </>
+            ) : null}
+            {value === 3 ? (
+              <>
+                <TextField
+                  fullWidth
+                  multiline
+                  label="任意の文章"
+                  type="text"
+                  name="anySentence"
+                  variant="standard"
+                  value={seminar.anySentence}
+                  onChange={handleInuptChange}
+                />
+                <TextField
+                  fullWidth
+                  label="アンケートURL"
+                  type="text"
+                  name="enqueteUrl"
+                  variant="standard"
+                  value={seminar.enqueteUrl}
+                  onChange={handleInuptChange}
+                />
+                <TextField
+                  fullWidth
+                  label="アンケート締切"
+                  type="text"
+                  name="enqueteDeadline"
+                  variant="standard"
+                  value={seminar.enqueteDeadline}
+                  onChange={handleInuptChange}
+                />
+              </>
+            ) : null}
+            {value === 2 ? (
+              <TextField
+                fullWidth
+                multiline
+                label="視聴用URL"
+                type="text"
+                name="urlForWatching"
+                variant="standard"
+                value={seminar.urlForWatching}
+                onChange={handleInuptChange}
+              />
+            ) : null}
             {value === 0 ? (
               <TextField
                 fullWidth
@@ -199,7 +310,7 @@ function App() {
                 onChange={handleInuptChange}
               />
             ) : null}
-            {value === 2 ? (
+            {value === 2  && seminar.method === "オンライン" ? (
               <TextField
                 fullWidth
                 multiline

@@ -11,14 +11,12 @@ const Thanks: React.FC<SeminarProps> = ({ seminar }) => {
 ${seminar.name}事務局でございます。
 このたびはセミナーにご参加・お申込みいただき、誠にありがとうございました。
 
-{{ 任意の文章 }}
-
+${seminar.anySentence ? seminar.anySentence : "{任意の文章}"}
 
 ▼アンケートご協力のお願い
 ------------------------------------------------------------------
-下記アンケートにご協力をお願いいたします。
-{{ アンケートURL }}
-締切：{{ 締切 }}
+${seminar.enqueteUrl ? seminar.enqueteUrl : "{アンケートURL}"}
+締切：${seminar.enqueteDeadline ? seminar.enqueteDeadline : "{締切}"}
 ------------------------------------------------------------------
 
 ご不明点、お困りのことなどございましたらお気軽にご相談ください。

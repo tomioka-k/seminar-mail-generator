@@ -13,6 +13,12 @@ export interface Seminar {
   flyerUrl: string;
   inquiry: string;
   document: string;
+  urlForWatching: string;
+  anySentence: string;
+  enqueteUrl: string;
+  enqueteDeadline: string;
+  CPD: boolean;
+  method: string;
 }
 
 export interface SeminarProps {
